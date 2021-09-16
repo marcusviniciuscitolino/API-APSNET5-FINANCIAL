@@ -1,3 +1,5 @@
+using API_ASPNET5_FINANCIAL.Service.Implementation;
+using API_ASPNET5_FINANCIAL.Service.Interface;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -28,6 +30,9 @@ namespace API_ASPNET5_FINANCIAL
         {
 
             services.AddControllers();
+
+            //Dependency injection
+            services.AddScoped<IPersonService, PersonServiceImplementation>();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "API_ASPNET5_FINANCIAL", Version = "v1" });
